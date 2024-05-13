@@ -1,5 +1,14 @@
 package org.jonas;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@ToString
+@EqualsAndHashCode
+@Getter
+@Setter
 public class Department {
     private String departmentId;
     private String departmentName;
@@ -7,6 +16,7 @@ public class Department {
 
     public Department(String departmentName) {
         this.departmentName = departmentName;
+        departmentId = String.format("%2s", departmentId);
     }
 
     public boolean validateDepartmentName(String departmentName) {
