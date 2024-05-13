@@ -4,6 +4,8 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+
 @EqualsAndHashCode
 @Getter
 @Setter
@@ -15,6 +17,15 @@ public class Student {
     private Department department;
     private ArrayList<Course> registeredCourses;
     private static int nextId = 1;
+
+    public Student(String studentName, Gender gender, Address address, Department department) {
+        this.studentName = studentName;
+        this.gender = gender;
+        this.address = address;
+        this.department = department;
+        studentId = String.format("S%.6s", nextId);
+        nextId++;
+    }
 
     /**
      * registers a course, add the course to the student's registeredCourses list, and add the student to the course's
