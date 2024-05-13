@@ -16,7 +16,11 @@ public class Assignment {
      * calculates the average score for one assignment
      */
     public void calcAssignmentAvg() {
-        //TODO: to be implemented
+        double avg = 0;
+        for (int score : scores) {
+            avg += score;
+        }
+        assignmentAverage = avg / scores.size();
     }
 
     /**
@@ -41,7 +45,7 @@ public class Assignment {
                 case 9, 10 -> random.nextInt(90, 101);
                 default -> 0;
             };
-            scores.add(randScore, i);
+            scores.set(i, randScore);
         }
         calcAssignmentAvg();
     }
