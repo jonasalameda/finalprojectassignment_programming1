@@ -2,7 +2,10 @@ package org.jonas;
 
 import lombok.*;
 
+@ToString
+@EqualsAndHashCode
 @Getter
+@Setter
 public class Address {
     private int streetNo;
     private String street;
@@ -11,7 +14,7 @@ public class Address {
     private String postalCode;
     private String country;
 
-    public Address(int streetNo, String street, String city, String province, String country) {
+    public Address(int streetNo, String street, String city, String province, String country, String postalCode) {
         this.streetNo = streetNo;
         this.street = street;
         this.city = city;
