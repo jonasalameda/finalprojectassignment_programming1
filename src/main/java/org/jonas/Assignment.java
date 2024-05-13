@@ -21,6 +21,16 @@ public class Assignment {
         calcAssignmentAvg();
     }
 
+    @Override
+    public String toString() {
+        return "Assignment{" +
+                "assignmentId='" + assignmentId + '\'' +
+                ", assignmentName='" + assignmentName + '\'' +
+                ", weight=" + weight +
+                ", maxScore=" + maxScore +
+                '}';
+    }
+
     /**
      * calculates the average score for one assignment
      */
