@@ -31,14 +31,14 @@ public class Address {
      * @param postalCode postal code given in String, should length of 6 or 7
      * @return if the postal code is valid or not
      */
-    public static boolean isPostalCodeValid(String postalCode) {
+    private static boolean isPostalCodeValid(String postalCode) {
         if (postalCode.length() == 6) {
             return Character.isAlphabetic(postalCode.charAt(0)) &&
-            Character.isDigit(postalCode.charAt(1)) &&
-            Character.isAlphabetic(postalCode.charAt(2)) &&
-            Character.isDigit(postalCode.charAt(3)) &&
-            Character.isAlphabetic(postalCode.charAt(4)) &&
-            Character.isDigit(postalCode.charAt(5));
+                    Character.isDigit(postalCode.charAt(1)) &&
+                    Character.isAlphabetic(postalCode.charAt(2)) &&
+                    Character.isDigit(postalCode.charAt(3)) &&
+                    Character.isAlphabetic(postalCode.charAt(4)) &&
+                    Character.isDigit(postalCode.charAt(5));
         }
         if (postalCode.length() == 7) {
             return Character.isAlphabetic(postalCode.charAt(0)) &&
@@ -50,5 +50,9 @@ public class Address {
                     Character.isDigit(postalCode.charAt(6));
         }
         return false;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = isPostalCodeValid(postalCode) ? postalCode : null;
     }
 }
