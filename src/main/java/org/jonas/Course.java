@@ -19,6 +19,16 @@ public class Course {
     private ArrayList<Double> finalScores;
     private static int nextId = 1;
 
+    public Course(String courseName, double credits, Department department) {
+        this.courseId = String.format("%02d", nextId++);
+        this.courseName = courseName;
+        this.credits = credits;
+        this.department = department;
+        this.assignments = new ArrayList<>();
+        this.students = new ArrayList<>();
+        this.finalScores = new ArrayList<>();
+    }
+
     /**
      *checks if the sum of weights of all assignments of that course equals to `1 (100%)`
      * @return returns true if it's equals to 100%, otherwise false
@@ -91,7 +101,9 @@ public class Course {
      * and calculates the final score for each student.
      */
     public void generateScore() {
-
+        for (Assignment assignment : assignments) {
+            assignment.generateRandomScore();
+        }
     }
 
     /**
