@@ -10,7 +10,7 @@ import java.util.ArrayList;
 @Getter
 @Setter
 public class Student {
-    private String studentId = "s";
+    private String studentId;
     private String studentName;
     private Gender gender;
     private Address address;

@@ -24,8 +24,11 @@ public class Course {
      * @return returns true if it's equals to 100%, otherwise false
      */
     public boolean isAssignmentWeightValid() {
-        return false;
-        //TODO: to be implemented
+        int sum = 0;
+        for (Assignment assignment : assignments) {
+            sum += (int) assignment.getWeight();
+        }
+        return sum >= 100;
     }
 
     /**
@@ -36,17 +39,32 @@ public class Course {
      * @return returns true if the student is not on the list, otherwise false
      */
     public boolean registerStudent(Student student) {
-        return false;
-        //TODO: to be implemented
+        for (Student registeredStudent : students) {
+            if (registeredStudent.equals(student)) {
+                return false;
+            }
+        }
+
+        for (Assignment assignment : assignments) {
+            assignment.getScores().add(null);
+        }
+        students.add(student);
+        finalScores.add(null);
+        return true;
     }
 
     /**
-     * calculates the weighted average score of a student.
-     * @return returns an array of the weighted average of a student
+     * calculates the weighted average score of all students.
+     * weight * score
      */
-    public int[] calcStudentAverage() {
-        return new int[0];
-        //TODO: to be implemented
+    public void calcStudentsAverage() {
+        for (int i = 0; i < students.size(); i++) {
+            double avg = 0;
+            for (Assignment assignment : assignments) {
+               avg += assignment.getScores().get(i) * assignment.getWeight();
+            }
+            finalScores.set(i, avg);
+        }
     }
 
     /**
@@ -57,8 +75,15 @@ public class Course {
      * @return returns true if the assignment can be added otherwise false
      */
     public boolean addAssignment(String assignmentName, double weight, int maxScore) {
-        return false;
-        //TODO: to be implemented
+        for (Assignment existingAssignment : assignments) {
+            if (existingAssignment.getAssignmentName().equals(assignmentName)) {
+                return false;
+            }
+        }
+
+        Assignment assignment = new Assignment(assignmentName, weight, maxScore);
+        assignments.add(assignment);
+        return true;
     }
 
     /**
@@ -66,7 +91,7 @@ public class Course {
      * and calculates the final score for each student.
      */
     public void generateScore() {
-        //TODO: to be implemented
+
     }
 
     /**
