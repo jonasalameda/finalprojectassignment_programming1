@@ -19,11 +19,17 @@ public class Assignment {
     private ArrayList<Integer> scores;
     private static int nextId = 1;
 
-    public Assignment(String assignmentName, double weight, int maxScore) {
-        this.assignmentId = String.format("%s", nextId++);
+    public Assignment(String assignmentName, double weight, int maxScore, int studentAmount) {
+        this.assignmentId = String.format("%02d", nextId++);
         this.assignmentName = assignmentName;
         this.weight = weight;
         this.maxScore = maxScore;
+
+        this.scores = new ArrayList<>();
+        for (int i = 0; i < studentAmount; i++) {
+            scores.add(null);
+        }
+
         generateRandomScore();
         calcAssignmentAvg();
     }
