@@ -1,8 +1,15 @@
 package org.jonas;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.Random;
 
+@EqualsAndHashCode
+@Getter
+@Setter
 public class Assignment {
     private String assignmentId;
     private String assignmentName;
@@ -16,7 +23,7 @@ public class Assignment {
         this.assignmentName = assignmentName;
         this.weight = weight;
         this.maxScore = maxScore;
-        nextId++;
+        this.assignmentId = String.format("%s", nextId++);
         generateRandomScore();
         calcAssignmentAvg();
     }
@@ -68,4 +75,5 @@ public class Assignment {
         }
         calcAssignmentAvg();
     }
+
 }
