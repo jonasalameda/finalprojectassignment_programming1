@@ -20,7 +20,7 @@ public class Course {
     private static int nextId = 1;
 
     public Course(String courseName, double credits, Department department) {
-        this.courseId = String.format("%02d", nextId++);
+        this.courseId = String.format("C-D%2d-%2d", nextId++);
         this.courseName = courseName;
         this.credits = credits;
         this.department = department;
@@ -91,7 +91,7 @@ public class Course {
             }
         }
 
-        Assignment assignment = new Assignment(assignmentName, weight, maxScore);
+        Assignment assignment = new Assignment(assignmentName, weight, maxScore, students.size());
         assignments.add(assignment);
         return true;
     }
@@ -111,6 +111,35 @@ public class Course {
      * with the assignment averages and student weighted average
      */
     public void displayScores() {
-        //TODO: to be implemented
+        System.out.printf("Course: %s(%s)", courseName, courseId);
+        for (int i = 0; i < students.size(); i++) {
+            System.out.printf("%s       ", students.get(i).getStudentName());
+            for (int j = 0; j < assignments.size(); j++) {
+                System.out.printf("%s       ", assignments.get(j).getAssignmentName());
+            }
+            System.out.printf("%d       ",  assignments.get(i).getScores().get(i));
+        }
+    }
+
+    public String simplifiedToString() {
+        return "Course{" +
+                "courseId='" + courseId + '\'' +
+                ", courseName='" + courseName + '\'' +
+                ", credits=" + credits +
+                ", department=" + department +
+                '}';
+    }
+
+    //TODO: fix the toString method
+    @Override
+    public String toString() {
+        return "Course{" +
+                "courseId='" + courseId + '\'' +
+                ", courseName='" + courseName + '\'' +
+                ", credits=" + credits +
+                ", department=" + department +
+                ", assignments=" + assignments +
+                ", students=" + students +
+                '}';
     }
 }
