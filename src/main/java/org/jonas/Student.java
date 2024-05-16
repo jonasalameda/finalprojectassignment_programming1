@@ -19,22 +19,22 @@ public class Student {
     private static int nextId = 1;
 
     public Student(String studentName, Gender gender, Address address, Department department) {
+        this.studentId = String.format("S%06d", nextId++);
         this.studentName = studentName;
         this.gender = gender;
         this.address = address;
         this.department = department;
-        studentId = String.format("S%06d", nextId++);
     }
 
     /**
      * registers a course, add the course to the student's registeredCourses list, and add the student to the course's
      * registeredStudents list. If the course is already registered, directly returns `false`
-     * @param course
+     * @param course parameter to have a new student or not
      * @return returns true if the student hasnt registered in that course yet
      * and adds the course to the student's registered courses
      * otherwise, if the course is already registered, returns false
      */
-    public boolean registerCourse(String course) {
+    public boolean registerCourse(Course course) {
         return false;
         //TODO: to be implemented
     }
@@ -43,12 +43,12 @@ public class Student {
      * drops a course, remove the course from the student's registeredCourses list,
      * and remove the student from the course's registeredStudents list.
      * If the course is not registered yet, directly returns `false`
-     * @param courseId course's id to be dropped
+     * @param course course's id to be dropped
      * @return returns true if the course is registered and
      * removes that course from student's registered courses
      * otherwise, if the course is not registered returns false.
      */
-    public boolean dropCourse(String courseId) {
+    public boolean dropCourse(Course course) {
         return false;
         //TODO: to be implemented
     }
