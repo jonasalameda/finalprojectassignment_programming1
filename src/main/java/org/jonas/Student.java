@@ -23,8 +23,7 @@ public class Student {
         this.gender = gender;
         this.address = address;
         this.department = department;
-        studentId = String.format("S%06d", nextId);
-        nextId++;
+        studentId = String.format("S%06d", nextId++);
     }
 
     /**

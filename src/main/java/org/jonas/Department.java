@@ -16,8 +16,7 @@ public class Department {
 
     public Department(String departmentName) {
         this.departmentName = departmentName;
-        departmentId = String.format("D%02d", nextId);
-        nextId++;
+        departmentId = String.format("D%02d", nextId++);
     }
 
     public boolean validateDepartmentName(String departmentName) {
