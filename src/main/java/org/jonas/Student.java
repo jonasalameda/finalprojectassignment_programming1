@@ -48,7 +48,7 @@ public class Student {
             assignment.getScores().add(null);
         }
         course.getFinalScores().add(null);
-        System.out.printf("Added %s to your registered courses.%n", course);
+        System.out.printf("Added %s to your registered courses.%n", course.getCourseName());
         return true;
     }
 
@@ -88,16 +88,17 @@ public class Student {
     @Override
     public String toString() {
         String str =  "Student{" +
-                "studentId='" + studentId + '\'' +
-                ", studentName='" + studentName + '\'' +
-                ", gender=" + gender +
-                ", address=" + address +
-                ", department=" + department +
-                ", registeredCourses=";
+                "\n\tstudentId='" + studentId + '\'' +
+                "\n\tstudentName='" + studentName + '\'' +
+                "\n\tgender=" + gender +
+                "\n\taddress=" + address +
+                "\n\tdepartment=" + department +
+                "\n\tregisteredCourses=[";
 
         for (Course course : registeredCourses) {
-            str += course.simplifiedToString() + ", ";
+            str += "\n\t\t" + course.simplifiedToString() + ",";
         }
+        str += "\n\t]";
         return str;
     }
 }
