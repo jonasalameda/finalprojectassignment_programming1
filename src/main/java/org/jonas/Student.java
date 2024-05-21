@@ -38,6 +38,7 @@ public class Student {
     public boolean registerCourse(Course course) {
         for (Course existingCourse : registeredCourses) {
             if (existingCourse.getCourseName().equals(course.getCourseName())) {
+                System.out.println("Cannot drop this course since you've already registered.");
                 return false;
             }
         }
@@ -46,6 +47,8 @@ public class Student {
         for (Assignment assignment : course.getAssignments()) {
             assignment.getScores().add(null);
         }
+        course.getFinalScores().add(null);
+        System.out.printf("Added %s to your registered courses.%n", course);
         return true;
     }
 
@@ -61,6 +64,7 @@ public class Student {
     public boolean dropCourse(Course course) {
         for (Course existingCourse : registeredCourses) {
             if (!existingCourse.getCourseName().equals(course.getCourseName())) {
+                System.out.println("You've already dropped this course");
                 return false;
             }
         }
@@ -69,6 +73,31 @@ public class Student {
         for (Assignment assignment : course.getAssignments()) {
             assignment.getScores().remove(null);
         }
+        System.out.println("Course dropped successfully.");
         return true;
+    }
+
+    public String simplifiedToString() {
+        return "Student{" +
+                "studentId='" + studentId + '\'' +
+                ", studentName='" + studentName + '\'' +
+                ", department=" + department +
+                '}';
+    }
+
+    @Override
+    public String toString() {
+        String str =  "Student{" +
+                "studentId='" + studentId + '\'' +
+                ", studentName='" + studentName + '\'' +
+                ", gender=" + gender +
+                ", address=" + address +
+                ", department=" + department +
+                ", registeredCourses=";
+
+        for (Course course : registeredCourses) {
+            str += course.simplifiedToString() + ", ";
+        }
+        return str;
     }
 }
