@@ -34,16 +34,6 @@ public class Assignment {
         calcAssignmentAvg();
     }
 
-    @Override
-    public String toString() {
-        return "Assignment{" +
-                "assignmentId='" + assignmentId + '\'' +
-                ", assignmentName='" + assignmentName + '\'' +
-                ", weight=" + weight +
-                ", maxScore=" + maxScore +
-                '}';
-    }
-
     /**
      * calculates the average score for one assignment
      */
@@ -80,5 +70,15 @@ public class Assignment {
             scores.set(i, randScore);
         }
         calcAssignmentAvg();
+    }
+
+    @Override
+    public String toString() {
+        return "Assignment{" +
+                "assignmentId='" + assignmentId + '\'' +
+                ", assignmentName='" + assignmentName + '\'' +
+                ", weight=" + weight +
+                ", maxScore=" + maxScore +
+                '}';
     }
 }
