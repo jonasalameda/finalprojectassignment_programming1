@@ -38,7 +38,7 @@ public class Course {
         for (Assignment assignment : assignments) {
             sum += (int) assignment.getWeight();
         }
-        return sum >= 100;
+        return sum > 100;
     }
 
     /**
@@ -70,8 +70,9 @@ public class Course {
     public void calcStudentsAverage() {
         for (int i = 0; i < students.size(); i++) {
             double avg = 0;
+
             for (Assignment assignment : assignments) {
-               avg += assignment.getScores().get(i) * assignment.getWeight();
+                avg += assignment.getScores().get(i) * assignment.getWeight();
             }
             finalScores.set(i, avg);
         }
@@ -104,6 +105,7 @@ public class Course {
         for (Assignment assignment : assignments) {
             assignment.generateRandomScore();
         }
+        calcStudentsAverage();
     }
 
     /**
@@ -111,29 +113,29 @@ public class Course {
      * with the assignment averages and student weighted average
      */
     public void displayScores() {
-        System.out.printf("Course: %s(%s)%n", courseName, courseId);
-        // header
+        System.out.printf("%nCourse: %s(%s)%n", courseName, courseId);
 
-        System.out.printf("%15s ", "");
+        // header
+        System.out.printf("%15s", "");
         for (Assignment assignment : assignments) {
-            System.out.printf("%15s ", assignment.getAssignmentName());
+            System.out.printf("%15s", assignment.getAssignmentName());
         }
-        System.out.println();
+        System.out.printf("%15s\n", "Final Score");
 
         // scores
         for (int i = 0; i < students.size(); i++) {
-            System.out.printf("%15s ", students.get(i).getStudentName());
+            System.out.printf("%15s", students.get(i).getStudentName());
             for (Assignment assignment : assignments) {
-                System.out.printf("%15s ",  assignment.getScores().get(i));
+                System.out.printf("%15s",  assignment.getScores().get(i));
             }
-            System.out.println();
+            System.out.printf("%15s\n",  getFinalScores().get(i));
         }
 
         System.out.printf("%15s", "Average");
 
         // average
-        for (int i = 0; i < assignments.size(); i++) {
-            System.out.printf("%15s", assignments.get(i).getAssignmentAverage());
+        for (Assignment assignment : assignments) {
+            System.out.printf("%15s", assignment.getAssignmentAverage());
         }
 
     }
@@ -147,16 +149,20 @@ public class Course {
                 '}';
     }
 
-    //TODO: fix the toString method
     @Override
     public String toString() {
-        return "Course{" +
+        String str =  "Course{" +
                 "courseId='" + courseId + '\'' +
                 ", courseName='" + courseName + '\'' +
                 ", credits=" + credits +
-                ", department=" + department +
-                ", assignments=" + assignments +
-                ", students=" + students +
-                '}';
+                ", department=" + department.getDepartmentName() +
+                ", assignments=" + assignments.toString() +
+                ", students=";
+
+        for (Student student : students) {
+            str += student.simplifiedToString() + ", ";
+        }
+
+        return str;
     }
 }
