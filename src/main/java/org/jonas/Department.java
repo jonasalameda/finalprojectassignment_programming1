@@ -19,6 +19,12 @@ public class Department {
         departmentId = String.format("D%02d", nextId++);
     }
 
+    /**
+     * checks if a department name is valid or not,
+     * a department name should only contain letters or space
+     * @param departmentName String of the name of the department
+     * @return returns true if its valid, otherwise false
+     */
     public boolean validateDepartmentName(String departmentName) {
         for (int i = 0; i < departmentName.length(); i++) {
             if (!Character.isAlphabetic(departmentName.charAt(i))) {
