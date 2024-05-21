@@ -152,17 +152,22 @@ public class Course {
     @Override
     public String toString() {
         String str =  "Course{" +
-                "courseId='" + courseId + '\'' +
-                ", courseName='" + courseName + '\'' +
-                ", credits=" + credits +
-                ", department=" + department.getDepartmentName() +
-                ", assignments=" + assignments.toString() +
-                ", students=";
+                "\n\tcourseId='" + courseId + '\'' +
+                "\n\tcourseName='" + courseName + '\'' +
+                "\n\tcredits=" + credits +
+                "\n\tdepartment=" + department.getDepartmentName() +
+                "\n\tassignments=[";
 
-        for (Student student : students) {
-            str += student.simplifiedToString() + ", ";
+        for (Assignment assignment : assignments) {
+            str += "\n\t\t" + assignment + ",";
         }
+        str += "\n\t]";
 
+        str += "\n\tstudents=[";
+        for (Student student : students) {
+            str += "\n\t\t" + student.simplifiedToString() + ",";
+        }
+        str += "\n\t]";
         return str;
     }
 }
