@@ -19,6 +19,7 @@ public class Student {
     private static int nextId = 1;
 
     public Student(String studentName, Gender gender, Address address, Department department) {
+        this.registeredCourses = new ArrayList<>();
         this.studentId = String.format("S%06d", nextId++);
         this.studentName = studentName;
         this.gender = gender;
@@ -35,8 +36,17 @@ public class Student {
      * otherwise, if the course is already registered, returns false
      */
     public boolean registerCourse(Course course) {
-        return false;
-        //TODO: to be implemented
+        for (Course existingCourse : registeredCourses) {
+            if (existingCourse.getCourseName().equals(course.getCourseName())) {
+                return false;
+            }
+        }
+        course.getStudents().add(this);
+        registeredCourses.add(course);
+        for (Assignment assignment : course.getAssignments()) {
+            assignment.getScores().add(null);
+        }
+        return true;
     }
 
     /**
@@ -49,7 +59,16 @@ public class Student {
      * otherwise, if the course is not registered returns false.
      */
     public boolean dropCourse(Course course) {
-        return false;
-        //TODO: to be implemented
+        for (Course existingCourse : registeredCourses) {
+            if (!existingCourse.getCourseName().equals(course.getCourseName())) {
+                return false;
+            }
+        }
+        course.getStudents().remove(this);
+        registeredCourses.remove(course);
+        for (Assignment assignment : course.getAssignments()) {
+            assignment.getScores().remove(null);
+        }
+        return true;
     }
 }
