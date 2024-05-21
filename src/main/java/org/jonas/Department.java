@@ -28,9 +28,11 @@ public class Department {
     public boolean validateDepartmentName(String departmentName) {
         for (int i = 0; i < departmentName.length(); i++) {
             if (!Character.isAlphabetic(departmentName.charAt(i))) {
+                System.out.println("department name is not valid");
                 return false;
             }
         }
+        System.out.println("department name is valid");
         return true;
     }
 }
