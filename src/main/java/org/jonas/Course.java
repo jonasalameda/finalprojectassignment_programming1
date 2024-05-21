@@ -20,7 +20,7 @@ public class Course {
     private static int nextId = 1;
 
     public Course(String courseName, double credits, Department department) {
-        this.courseId = String.format("C-D%2d-%2d", nextId++);
+        this.courseId = String.format("C-D%02d-%02d", nextId, nextId++);
         this.courseName = courseName;
         this.credits = credits;
         this.department = department;
@@ -111,14 +111,31 @@ public class Course {
      * with the assignment averages and student weighted average
      */
     public void displayScores() {
-        System.out.printf("Course: %s(%s)", courseName, courseId);
-        for (int i = 0; i < students.size(); i++) {
-            System.out.printf("%s       ", students.get(i).getStudentName());
-            for (int j = 0; j < assignments.size(); j++) {
-                System.out.printf("%s       ", assignments.get(j).getAssignmentName());
-            }
-            System.out.printf("%d       ",  assignments.get(i).getScores().get(i));
+        System.out.printf("Course: %s(%s)%n", courseName, courseId);
+        // header
+
+        System.out.printf("%15s ", "");
+        for (Assignment assignment : assignments) {
+            System.out.printf("%15s ", assignment.getAssignmentName());
         }
+        System.out.println();
+
+        // scores
+        for (int i = 0; i < students.size(); i++) {
+            System.out.printf("%15s ", students.get(i).getStudentName());
+            for (Assignment assignment : assignments) {
+                System.out.printf("%15s ",  assignment.getScores().get(i));
+            }
+            System.out.println();
+        }
+
+        System.out.printf("%15s", "Average");
+
+        // average
+        for (int i = 0; i < assignments.size(); i++) {
+            System.out.printf("%15s", assignments.get(i).getAssignmentAverage());
+        }
+
     }
 
     public String simplifiedToString() {
@@ -126,7 +143,7 @@ public class Course {
                 "courseId='" + courseId + '\'' +
                 ", courseName='" + courseName + '\'' +
                 ", credits=" + credits +
-                ", department=" + department +
+                ", department=" + department.getDepartmentName() +
                 '}';
     }
 
