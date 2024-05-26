@@ -91,5 +91,4 @@ public class AssignmentTest {
         boolean expectedResult = false;
         boolean result = course.isAssignmentWeightValid();
     }
-
 }

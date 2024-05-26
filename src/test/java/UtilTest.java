@@ -38,5 +38,4 @@ public class UtilTest {
         String result = Util.toTitleCase(strIn);
         Assertions.assertEquals(expectedResult, result);
     }
-
 }
