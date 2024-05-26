@@ -30,9 +30,6 @@ public class Assignment {
         for (int i = 0; i < studentAmount; i++) {
             scores.add(null);
         }
-
-        generateRandomScore();
-        calcAssignmentAvg();
     }
 
     /**
