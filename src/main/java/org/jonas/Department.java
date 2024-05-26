@@ -4,6 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import util.Util;
 
 @ToString
 @EqualsAndHashCode
@@ -15,7 +16,7 @@ public class Department {
     private static int nextId = 1;
 
     public Department(String departmentName) {
-        this.departmentName = departmentName;
+        this.departmentName = Util.toTitleCase(departmentName);
         departmentId = String.format("D%02d", nextId++);
     }
 
@@ -27,7 +28,7 @@ public class Department {
      */
     public boolean validateDepartmentName(String departmentName) {
         for (int i = 0; i < departmentName.length(); i++) {
-            if (!Character.isAlphabetic(departmentName.charAt(i))) {
+            if (!Character.isDigit(departmentName.charAt(i))) {
                 System.out.println("department name is not valid");
                 return false;
             }
