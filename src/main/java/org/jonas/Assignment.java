@@ -3,11 +3,13 @@ package org.jonas;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import util.Util;
 
 import java.util.ArrayList;
 import java.util.Random;
 
+@ToString
 @EqualsAndHashCode
 @Getter
 @Setter
@@ -68,15 +70,5 @@ public class Assignment {
             scores.set(i, randScore);
         }
         calcAssignmentAvg();
-    }
-
-    @Override
-    public String toString() {
-        return "Assignment{" +
-                "assignmentId='" + assignmentId + '\'' +
-                ", assignmentName='" + assignmentName + '\'' +
-                ", weight=" + weight +
-                ", maxScore=" + maxScore +
-                '}';
     }
 }
