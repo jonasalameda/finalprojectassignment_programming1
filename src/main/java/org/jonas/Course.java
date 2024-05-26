@@ -55,6 +55,7 @@ public class Course {
     public boolean registerStudent(Student student) {
         for (Student registeredStudent : students) {
             if (registeredStudent.equals(student)) {
+                System.out.println("Student is already registered");
                 return false;
             }
         }
@@ -95,12 +96,14 @@ public class Course {
     public boolean addAssignment(String assignmentName, double weight, int maxScore) {
         for (Assignment existingAssignment : assignments) {
             if (existingAssignment.getAssignmentName().equals(assignmentName)) {
+                System.out.println("Assignment already exists");
                 return false;
             }
         }
 
         Assignment assignment = new Assignment(assignmentName, weight, maxScore, students.size());
         assignments.add(assignment);
+        System.out.println("Assignment was created successfully");
         return true;
     }
 

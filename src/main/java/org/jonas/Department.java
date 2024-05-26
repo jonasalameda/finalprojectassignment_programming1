@@ -33,7 +33,7 @@ public class Department {
                 return false;
             }
         }
-        System.out.println("department name is valid");
+        System.out.println("Department name is valid");
         return true;
     }
 }

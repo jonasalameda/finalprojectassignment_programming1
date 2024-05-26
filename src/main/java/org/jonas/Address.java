@@ -33,6 +33,7 @@ public class Address {
      */
     public static boolean isPostalCodeValid(String postalCode) {
         if (postalCode == null) {
+            System.out.println("Postal code is null");
             return false;
         }
         if (postalCode.length() == 6) {
@@ -52,6 +53,7 @@ public class Address {
                     Character.isAlphabetic(postalCode.charAt(5)) &&
                     Character.isDigit(postalCode.charAt(6));
         }
+        System.out.println("Postal code is not valid");
         return false;
     }
 
