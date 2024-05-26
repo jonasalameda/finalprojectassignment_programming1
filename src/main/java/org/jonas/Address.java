@@ -20,7 +20,7 @@ public class Address {
         this.city = city;
         this.province = province;
         this.country = country;
-        this.postalCode = isPostalCodeValid(postalCode) ? postalCode : null;
+        this.postalCode = isPostalCodeValid(postalCode) ? postalCode.toUpperCase() : null;
     }
 
     /**
@@ -31,7 +31,10 @@ public class Address {
      * @param postalCode postal code given in String, should length of 6 or 7
      * @return if the postal code is valid or not
      */
-    private static boolean isPostalCodeValid(String postalCode) {
+    public static boolean isPostalCodeValid(String postalCode) {
+        if (postalCode == null) {
+            return false;
+        }
         if (postalCode.length() == 6) {
             return Character.isAlphabetic(postalCode.charAt(0)) &&
                     Character.isDigit(postalCode.charAt(1)) &&

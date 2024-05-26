@@ -7,6 +7,12 @@ public class Util {
      * @return Title case of strIn, ex: yi -> Yi, comPutER sciENCE -> Computer Science
      */
     public static String toTitleCase(String strIn) {
+        if (strIn == null) {
+            return null;
+        }
+        if (strIn.isEmpty()) {
+            return "";
+        }
         String[] strArray = strIn.split(" ");
         String strOut = "";
         for (String string : strArray) {

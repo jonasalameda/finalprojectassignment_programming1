@@ -35,11 +35,14 @@ public class Course {
      * @return returns true if it's equals to 100%, otherwise false
      */
     public boolean isAssignmentWeightValid() {
-        int sum = 0;
-        for (Assignment assignment : assignments) {
-            sum += (int) assignment.getWeight();
+        if (assignments == null) {
+            return false;
         }
-        return sum > 100;
+        double sum = 0;
+        for (Assignment assignment : assignments) {
+            sum += assignment.getWeight();
+        }
+        return sum >= 1;
     }
 
     /**
@@ -69,6 +72,9 @@ public class Course {
      * weight * score
      */
     public void calcStudentsAverage() {
+        if (assignments == null || students == null) {
+            return;
+        }
         for (int i = 0; i < students.size(); i++) {
             double avg = 0;
 
