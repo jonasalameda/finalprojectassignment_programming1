@@ -35,7 +35,7 @@ public class Course {
      * @return returns true if it's equals to 100%, otherwise false
      */
     public boolean isAssignmentWeightValid() {
-        if (assignments == null) {
+        if (assignments == null || assignments.isEmpty()) {
             return false;
         }
         double sum = 0;
