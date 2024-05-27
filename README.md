@@ -3,7 +3,7 @@ Final Project is the final assignemnt from Programming 1 at Vanier College that 
 
 # Quick setup
 - `$ git clone https://github.com/jonasalameda/finalprojectassignment_programming1.git`
-- `cd finalprojectassignment_programming1`
+- `$ cd finalprojectassignment_programming1`
 
 or (in case clone is not working correctly)
 
